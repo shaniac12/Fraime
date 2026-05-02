@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fraime — Privacy Policy</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+         max-width: 720px; margin: 2rem auto; padding: 0 1rem; line-height: 1.55;
+         color: #222; background: #f8f7f4; }
+  h1, h2 { color: #3c3c3c; }
+  h2 { margin-top: 2rem; border-bottom: 1px solid #ddd; padding-bottom: 0.3rem; }
+  code { background: #eee; padding: 1px 5px; border-radius: 3px; }
+  .updated { color: #666; font-size: 0.9rem; }
+</style>
+</head>
+<body>
+
+<h1>Fraime — Privacy Policy</h1>
+<p class="updated">Last updated: 2026-05-01</p>
+
+<p>Fraime is a companion app for personal e-ink art frames. It is built and maintained
+by a single person for personal use; it is offered free of charge on the App Store.
+This policy explains exactly what data the app touches.</p>
+
+<h2>What Fraime collects</h2>
+
+<p><strong>Nothing on our servers.</strong> Fraime does not have a backend. We do not
+operate a service that receives any data from the app. There is no analytics SDK,
+no advertising SDK, no third-party tracker, and no telemetry of any kind.</p>
+
+<h2>What Fraime stores on your device</h2>
+
+<ul>
+  <li><strong>Frame names and URLs</strong> — saved in <code>UserDefaults</code> so your
+  paired frames persist between launches.</li>
+  <li><strong>Pairing codes</strong> — saved in the iOS <code>Keychain</code>
+  (<code>kSecAttrAccessibleAfterFirstUnlock</code>) so only Fraime can read them and
+  only on your unlocked device. They never leave your iPhone.</li>
+  <li><strong>Demo Mode preference</strong> — a simple boolean toggle saved in
+  <code>UserDefaults</code>.</li>
+</ul>
+
+<h2>What Fraime sends, where, and to whom</h2>
+
+<p>When you use a real (non-Demo) frame, Fraime sends data only to the IP address you
+provided in the pairing form — typically a Raspberry Pi on your home Wi-Fi:</p>
+
+<ul>
+  <li><strong>Photos</strong> — when you tap "Send Photo," the chosen image is POSTed to
+  your frame's <code>/upload</code> endpoint. It is never sent anywhere else.</li>
+  <li><strong>Voice transcripts</strong> — when you "Speak to Frame," your speech is
+  transcribed locally on your iPhone using Apple's on-device Speech Recognition
+  framework. Only the resulting text string is POSTed to your frame's
+  <code>/voice</code> endpoint. The audio recording itself is never stored and
+  never leaves your device.</li>
+  <li><strong>Messages</strong> — text you type in the Message screen is rendered to
+  a PNG image on your iPhone, then POSTed to your frame's <code>/upload</code>
+  endpoint.</li>
+</ul>
+
+<p>All three requests carry a Bearer authorization header containing your frame's
+pairing code so the frame can verify the request came from you. The header is
+visible only in transit between your iPhone and your frame on your LAN.</p>
+
+<h2>Apple Speech Recognition (third-party processing)</h2>
+
+<p>The Speech Recognition framework Fraime uses is provided by Apple. On modern iOS
+devices speech recognition runs entirely on-device. Apple's privacy practices for
+this framework apply; you can read them in
+<a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a>.</p>
+
+<h2>Permissions Fraime requests</h2>
+
+<ul>
+  <li><strong>Local Network</strong> — to talk to your frame on your home Wi-Fi.</li>
+  <li><strong>Microphone</strong> — to capture your voice for the "Speak to Frame" feature.</li>
+  <li><strong>Speech Recognition</strong> — to transcribe your voice locally.</li>
+  <li><strong>Photo Library</strong> — to let you pick a photo to send to your frame.</li>
+</ul>
+
+<p>Fraime does not request location, contacts, calendar, health, or any other system data.</p>
+
+<h2>Children</h2>
+
+<p>Fraime does not collect any data from anyone, including children under 13. The
+app is rated 4+.</p>
+
+<h2>Changes to this policy</h2>
+
+<p>If this policy changes, the "Last updated" date at the top of the page will
+change too. Material changes will be reflected before the next App Store update.</p>
+
+<h2>Contact</h2>
+
+<p>Questions? Open an issue at
+<a href="https://github.com/shaniac/fraime">github.com/shaniac/fraime</a>
+or email the address listed on the App Store page.</p>
+
+</body>
+</html>
